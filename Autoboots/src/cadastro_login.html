@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="" >
+    <title>Autoboots</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../styleautoboots.css" type="text/css">
+    <script type="text/javascript" src="bootstrap-4.3.1-dist/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript"src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+
+    <title>Cadastro e Login</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Autoboots
+        </a>
+s
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Comprar
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="comprarNavbar">
+                        <a class="dropdown-item" href="#">Comprar Carros</a>
+                        <a class="dropdown-item" href="#">Carros novos</a>
+                        <a class="dropdown-item" href="#">Carros usados ou seminovos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Comprar Motos </a>
+                        <a class="dropdown-item" href="#">Motos novas</a>
+                        <a class="dropdown-item" href="#">Motos usadas ou seminovas</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="venderNavbar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vender
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Vender Carros</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Vender Motos </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ajudaNavbar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ajuda
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Fale Conosco</a>
+                        <a class="dropdown-item" href="#">Dúvidas Gerais</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="form1">
+        <h2 class="tituloformulario">
+            Fazer Login
+        </h2>
+        <form>
+            <div class="form-group">
+                <label>Endereço de email</label>
+                <input type="email" class="form-control" id="emailLogin" aria-describedby="emailHelp" placeholder="Digite email">
+            </div>
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" class="form-control" id="senhaLogin" placeholder="Senha">
+            </div>
+            <button type="button" class="btn btn-outline-success">Entrar</button>
+        </form>
+    </div>
+
+    <div class="form1">
+        <h2 class="tituloformulario">
+            Realizar Cadastro
+        </h2>
+        <form>
+            <div class="form-group">
+                <label>Endereço de email</label>
+                <input type="email" class="form-control" id="emailCadastro" aria-describedby="emailHelp" placeholder="Digite email">
+            </div>
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" class="form-control" id="senhaCadastro" placeholder="Senha">
+            </div>
+            <div class="form-group">
+                <label>CPF</label>
+                <input type="text" class="form-control" id="cpfCadastro" aria-describedby="cpf" placeholder="Digite CPF">
+            </div>
+            <div class="form-group">
+                <label>Endereço</label>
+                <input type="text" class="form-control" id="cidadeCadastro" aria-describedby="cidade" placeholder="Cidade">
+                <select class="form-control" id="estadoCadastro" >
+                    <option> - </option>
+                    <option>AC</option>
+                    <option>AL</option>
+                    <option>AP</option>
+                    <option>AM</option>
+                    <option>BA</option>
+                    <option>CE</option>
+                    <option>DF</option>
+                    <option>ES</option>
+                    <option>GO</option>
+                    <option>MA</option>
+                    <option>MT</option>
+                    <option>MS</option>
+                    <option>MG</option>
+                    <option>PA</option>
+                    <option>PB</option>
+                    <option>PR</option>
+                    <option>PE</option>
+                    <option>PI</option>
+                    <option>RJ</option>
+                    <option>RN</option>
+                    <option>RS</option>
+                    <option>RO</option>
+                    <option>RR</option>
+                    <option>SC</option>
+                    <option>SP</option>
+                    <option>SE</option>
+                    <option>TO</option>
+                </select>
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Confirmação</label>
+            </div>
+            <button type="button" class="btn btn-outline-success">Cadastrar</button>
+        </form>
+    </div>
+
+
+</body>
+</html>

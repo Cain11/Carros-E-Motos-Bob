@@ -1,0 +1,42 @@
+body{
+    background-color: black;
+}
+
+.carrosdestaques{
+    color: white;
+    text-align: center;
+    background-color:  #343a40!important;
+    margin-bottom: 0px;
+}
+form{
+    horiz-align: center;
+}
+
+.carrosdestaquesdiv{
+    white-space: nowrap;
+    color: white;
+}
+
+.form1{
+    background-color: #343a40!important;
+    color: white;
+    margin: 30px;
+    padding: 10px;
+}
+
+.tituloformulario{
+    text-align: center;
+    background-color: darkgreen;
+    padding: 10px;
+}
+
+.btn-primary{
+    background-color: darkgreen;
+    border: green;
+}
+
+[class*=btn-primary]:hover, [class*=btn-primary]:hover ~ [class*=btn-primary] {
+    background-color:lightgreen;
+}
+
+
