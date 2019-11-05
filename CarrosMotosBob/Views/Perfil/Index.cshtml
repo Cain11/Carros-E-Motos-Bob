@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model CarrosMotosBob.Models.PerfilCliente.LoginIndexModel
+
+<div id="login">
+    <h3> Efetuar Login</h3>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @using (Html.BeginRouteForm("Index", FormMethod.Post))
+                {
+                    @Html.HiddenFor(a => a.Id)
+                    <div>
+                        Entre com seu Id
+                        @Html.TextBoxFor(a => a.Id)
+                    </div>
+                    <div>
+                        entre com seu email
+                        @Html.TextBoxFor(a => a.EMail)
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success btn-lg">Entrar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>

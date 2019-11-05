@@ -1,0 +1,27 @@
+﻿@model CarrosMotosBob.Models.PerfilCliente.PerfilClienteIndexModel
+<div id="clientes">
+    <h3>Perfil do Usuario @Model.Nome</h3>
+    <div id="clientesTable">
+        <table class="table table-condensed" id="baseClientesIndextable">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>CPF</th>
+                <th>E-Mail</th>
+                <th>Telefone</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="clienteRow">
+                    <td class="">@Model.Nome</td>
+                    <td class="">@Model.Endereco</td>
+                    <td class="">@Model.CPF</td>
+                    <td class="">@Model.EMail</td>
+                    <td class="">@Model.Telefone</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

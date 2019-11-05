@@ -18,25 +18,20 @@ namespace CMBServices
 
         public IEnumerable<Cliente> GetAll()
         {
-            return _context.Clientes.Include(asset => asset.HistoricoCompras).Include(asst => asst.Anuncios);
+            return _context.Clientes;
         }
 
         public Cliente GetById(int id)
         {
             return _context.Clientes
-                .Include(asst => asst.HistoricoCompras)
-                .Include(asset => asset.Anuncios)
-                .FirstOrDefault(asset => asset.ClienteId == id);
+                .FirstOrDefault(asset => asset.Id == id);
         }
 
-        public HistoricoCompras GetHistoricoCompras(int id)
+        public IEnumerable<Anuncio> GetAnuncios(int id)
         {
-            return GetById(id).HistoricoCompras;
-        }
+            var anucios = new AnuncioServises(_context);
 
-        public AnunciosAbertos GetAnunciosAbertos(int id)
-        {
-            return GetById(id).Anuncios;
+            return anucios.GetByCliente(id);
         }
 
         public void Add(Cliente newCliente)
@@ -52,7 +47,7 @@ namespace CMBServices
 
         public string GetEndereco(int id)
         {
-            return GetById(id).Cidade + GetById(id).Estado;
+            return GetById(id).Cidade + ", " + GetById(id).Estado;
         }
 
         public string GetEMail(int id)
@@ -65,9 +60,18 @@ namespace CMBServices
             return GetById(id).Telefone;
         }
 
-        public int GetCPF(int id)
+        public string GetCPF(int id)
         {
-            return GetById(id).CPF;
+            var cpf = GetById(id).CPF.ToString();
+            int casas = cpf.Length;
+
+            while (casas < 11)
+            {
+                cpf = "0" + cpf;
+                casas++;
+            }
+
+            return cpf;
         }
     }
 }
