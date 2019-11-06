@@ -62,6 +62,11 @@ namespace CarrosMotosBob
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Cria o banco de dados automaticamente
+            using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            var context = serviceScope.ServiceProvider.GetRequiredService<CMBContext>();
+            context.Database.EnsureCreated();
         }
     }
 }

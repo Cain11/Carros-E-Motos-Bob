@@ -8,6 +8,7 @@ namespace CMBData
     {
         public CMBContext(DbContextOptions options) : base(options)
         {
+            
         }
 
         public DbSet<Cliente> Clientes { get; set; }
