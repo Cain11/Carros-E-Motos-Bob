@@ -1,40 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabre\\source\\repos\\CarrosMotosBob\\CarrosMotosBob.csproj": {}
+    "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CarrosMotosBob\\CarrosMotosBob.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabre\\source\\repos\\CarrosMotosBob\\CarrosMotosBob.csproj": {
+    "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CarrosMotosBob\\CarrosMotosBob.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabre\\source\\repos\\CarrosMotosBob\\CarrosMotosBob.csproj",
+        "projectUniqueName": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CarrosMotosBob\\CarrosMotosBob.csproj",
         "projectName": "CarrosMotosBob",
-        "projectPath": "C:\\Users\\gabre\\source\\repos\\CarrosMotosBob\\CarrosMotosBob.csproj",
-        "packagesPath": "C:\\Users\\gabre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabre\\source\\repos\\CarrosMotosBob\\obj\\",
+        "projectPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CarrosMotosBob\\CarrosMotosBob.csproj",
+        "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
+        "outputPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CarrosMotosBob\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "E:\\Appdata\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp3.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\gabre\\source\\repos\\CMBData\\CMBData.csproj": {
-                "projectPath": "C:\\Users\\gabre\\source\\repos\\CMBData\\CMBData.csproj"
+              "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\CMBData.csproj": {
+                "projectPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\CMBData.csproj"
               },
-              "C:\\Users\\gabre\\source\\repos\\CMBServices\\CMBServices.csproj": {
-                "projectPath": "C:\\Users\\gabre\\source\\repos\\CMBServices\\CMBServices.csproj"
+              "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBServices\\CMBServices.csproj": {
+                "projectPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBServices\\CMBServices.csproj"
               }
             }
           }
@@ -46,7 +46,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp3.0": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -59,6 +59,20 @@
               "version": "[3.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.0.0, )"
             }
@@ -81,35 +95,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100-preview1-014459\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gabre\\source\\repos\\CMBData\\CMBData.csproj": {
+    "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\CMBData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabre\\source\\repos\\CMBData\\CMBData.csproj",
+        "projectUniqueName": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\CMBData.csproj",
         "projectName": "CMBData",
-        "projectPath": "C:\\Users\\gabre\\source\\repos\\CMBData\\CMBData.csproj",
-        "packagesPath": "C:\\Users\\gabre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabre\\source\\repos\\CMBData\\obj\\",
+        "projectPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\CMBData.csproj",
+        "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
+        "outputPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "E:\\Appdata\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp3.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp3.0": {
             "projectReferences": {}
           }
         },
@@ -120,7 +134,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp3.0": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -152,38 +166,38 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100-preview1-014459\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gabre\\source\\repos\\CMBServices\\CMBServices.csproj": {
+    "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBServices\\CMBServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabre\\source\\repos\\CMBServices\\CMBServices.csproj",
+        "projectUniqueName": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBServices\\CMBServices.csproj",
         "projectName": "CMBServices",
-        "projectPath": "C:\\Users\\gabre\\source\\repos\\CMBServices\\CMBServices.csproj",
-        "packagesPath": "C:\\Users\\gabre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabre\\source\\repos\\CMBServices\\obj\\",
+        "projectPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBServices\\CMBServices.csproj",
+        "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
+        "outputPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBServices\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "E:\\Appdata\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp3.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\gabre\\source\\repos\\CMBData\\CMBData.csproj": {
-                "projectPath": "C:\\Users\\gabre\\source\\repos\\CMBData\\CMBData.csproj"
+              "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\CMBData.csproj": {
+                "projectPath": "E:\\Bibliotecas\\Documentos\\+Projetos\\VS 2019\\Carros-E-Motos-Bob\\CMBData\\CMBData.csproj"
               }
             }
           }
@@ -195,7 +209,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp3.0": {
           "imports": [
             "net461",
             "net462",
@@ -211,7 +225,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100-preview1-014459\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
