@@ -9,23 +9,26 @@ namespace CMBData.Models
     {
         public int Id { get; set; }
 
-        // Anotações "Required" foram removidas para apresentação do projeto
-        // ao professor. Colocar novamente quando necessário (necessitará de atualização
-        // manual do banco de dados ou removê-lo e criar novamente com o EF)
-
-        //[Required]
+        [Required]
         public Cliente Anunciante { get; set; }
 
-        [Required] 
-        public int Ano { get; set; }
-
-        //[Required] 
+        //TODO: Acrescentar [Required] ao modelo quando os modelos de carros forem implementados
         public Modelo Modelo { get; set; }
 
-        [Required] 
+        [Required]
+        public int Ano { get; set; }
+
+        [Required]
         public string Descricao { get; set; }
 
-        [Range(1, 3)] 
+        public string Imagem { get; set; }
+
+        public double Preco { get; set; }
+
+        [Required]
+        public DateTime DataPublicacao { get; set; }
+
+        //TODO: Excluir campo?
         public int Status { get; set; }
     }
 }

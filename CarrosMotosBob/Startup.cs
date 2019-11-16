@@ -30,7 +30,7 @@ namespace CarrosMotosBob
             services.AddMvc();
             services.AddSingleton(Configuration);
             services.AddScoped<ICliente, ClienteServices>();
-            services.AddScoped<IAnuncio, AnuncioServises>();
+            services.AddScoped<IAnuncio, AnuncioServices>();
             services.AddDbContext<CMBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CMBConnection")));
         }

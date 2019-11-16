@@ -1,52 +1,92 @@
-﻿@model IEnumerable<CMBData.Models.Anuncio>
+﻿@model IEnumerable<CarrosMotosBob.Models.ViewModels.Anuncio.ListaVm>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de anúncios";
+    string clienteId = ViewContext.HttpContext.Request.Cookies["ClienteId"];
 }
 
 <h1>Lista de anúncios</h1>
 
-<p>
-    <a asp-action="Create">Novo anúncio</a>
-</p>
+@if (clienteId != null)
+{
+    <p>
+        <a asp-action="Cadastro">Cadastrar anúncio</a>
+    </p>
+}
+
+<div id="anuncios" class="container">
+    @foreach (var anuncio in Model)
+    {
+        <div class="anuncio card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-9">
+                        <h4 class="card-title">
+                            <!-- TODO: Exibir dados resumidos do modelo do carro -->
+                        </h4>
+                        <h5>
+                            @anuncio.Anunciante.Cidade - @anuncio.Anunciante.Estado
+                        </h5>
+                    </div>
+                    <div class="col-3 text-right">
+                        <strong>@anuncio.Preco.ToString("C")</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        @if (!string.IsNullOrWhiteSpace(anuncio.Imagem))
+                        {
+                            <img src="data:image/jpeg;charset=utf-8;base64, @anuncio.Imagem" alt="Imagem do anúncio" class="img-fluid" />
+                        }
+                        else
+                        {
+                            <img src="https://image-placeholder.com/images/actual-size/320x240.png" alt="Sem imagem" class="img-fluid" />
+                        }
+                    </div>
+                    <div class="col-6">
+                        <p class="card-text">@anuncio.Descricao</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <p class="card-text">
+                    Publicado por: <strong>@anuncio.Anunciante.Nome</strong> em <strong>@anuncio.DataPublicacao</strong>
+                    <br />
+                    Contato: @anuncio.Anunciante.Telefone
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+@*
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Ano)
+                @Html.DisplayNameFor(model => model.Imagem)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Descricao)
             </th>
-            @*
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-                *@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            @*
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            *@
-            <td>
-                <!--
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                --> 
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+*@

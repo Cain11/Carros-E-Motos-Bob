@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CMBData.Models
 {
+    //TODO: Excluir classe?
     public class AnunciosAbertos
     {
         public int Id { get; set; }
