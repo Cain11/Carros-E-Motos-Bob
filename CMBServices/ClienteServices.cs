@@ -29,7 +29,7 @@ namespace CMBServices
 
         public IEnumerable<Anuncio> GetAnuncios(int id)
         {
-            var anucios = new AnuncioServises(_context);
+            var anucios = new AnuncioServices(_context);
 
             return anucios.GetByCliente(id);
         }

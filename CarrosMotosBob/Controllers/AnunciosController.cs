@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CarrosMotosBob.Models.ViewModels.Anuncio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CMBData;
 using CMBData.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace CarrosMotosBob.Controllers
 {
@@ -19,141 +22,111 @@ namespace CarrosMotosBob.Controllers
             _context = context;
         }
 
-        // GET: Anuncios
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
         {
-            return View(await _context.Anuncios.ToListAsync());
-        }
+            List<ListaVm> lista = new List<ListaVm>();
 
-        // GET: Anuncios/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            var anuncios = _context.Anuncios
+                .Include(a => a.Anunciante)
+                //TODO: Descomentar quando implementar os modelos de carros
+                /*.Include(a => a.Modelo)*/;
+
+            foreach (var anuncio in anuncios)
             {
-                return NotFound();
-            }
-
-            var anuncio = await _context.Anuncios
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (anuncio == null)
-            {
-                return NotFound();
-            }
-
-            return View(anuncio);
-        }
-
-        // GET: Anuncios/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Anuncios/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Ano,Descricao,Status")] Anuncio anuncio)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(anuncio);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(anuncio);
-        }
-
-        #region Edit e Remove
-        /*
-
-        // GET: Anuncios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var anuncio = await _context.Anuncios.FindAsync(id);
-            if (anuncio == null)
-            {
-                return NotFound();
-            }
-            return View(anuncio);
-        }
-
-        // POST: Anuncios/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Ano,Descricao,Status")] Anuncio anuncio)
-        {
-            if (id != anuncio.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                ListaVm.AnuncianteVm anunciante = new ListaVm.AnuncianteVm
                 {
-                    _context.Update(anuncio);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
+                    Nome = anuncio.Anunciante.Nome,
+                    Cidade = anuncio.Anunciante.Cidade,
+                    Estado = anuncio.Anunciante.Estado,
+                    Telefone = anuncio.Anunciante.Telefone
+                };
+
+                ListaVm.ModeloVm modelo = new ListaVm.ModeloVm
                 {
-                    if (!AnuncioExists(anuncio.Id))
+                    //TODO: Preencher com dados do modelo do carro do anúncio
+                };
+
+                ListaVm itemLista = new ListaVm
+                {
+                   Anunciante = anunciante,
+                   Imagem = anuncio.Imagem,
+                   Ano = anuncio.Ano,
+                   DataPublicacao = anuncio.DataPublicacao,
+                   Descricao = anuncio.Descricao,
+                   Preco = anuncio.Preco,
+                   Modelo = modelo
+                };
+
+                lista.Add(itemLista);
+            }
+
+            return View(lista);
+        }
+
+        [HttpGet]
+        public IActionResult Cadastro()
+        {
+            string clienteId = Request.Cookies["ClienteId"];
+            if (clienteId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(new CadastroVm());
+        }
+
+        [HttpPost]
+        public IActionResult Cadastrar(CadastroVm dadosCadastro)
+        {
+            string clienteId = Request.Cookies["ClienteId"];
+            if (clienteId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            Cliente anunciante = _context.Clientes.Find(Convert.ToInt32(clienteId));
+            //TODO: Descomentar quando implementar os modelos de carros
+            /*
+            Modelo modelo = _context.Modelos.Find(dadosCadastro.ModeloId);
+            if (modelo == null)
+            {
+                ModelState.AddModelError(string.Empty, "Modelo selecionado não existe");
+                return View("Cadastro", dadosCadastro);
+            }
+            */
+            Anuncio anuncio = new Anuncio
+            {
+                Anunciante = anunciante,
+                Ano = dadosCadastro.Ano,
+                DataPublicacao = DateTime.Now,
+                Descricao = dadosCadastro.Descricao,
+                Preco = dadosCadastro.Preco,
+                //TODO: Descomentar quando implementar os modelos de carros
+                //Modelo = modelo
+            };
+
+            if (dadosCadastro.Imagem != null)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    dadosCadastro.Imagem.CopyTo(memoryStream);
+                    if (memoryStream.Length < 2097152) //2097152 = 2Mb
                     {
-                        return NotFound();
+                        anuncio.Imagem = Convert.ToBase64String(memoryStream.ToArray());
                     }
                     else
                     {
-                        throw;
+                        ModelState.AddModelError(string.Empty, "Imagem muito grande (máx. 2Mb)");
+                        return View("Cadastro", dadosCadastro);
                     }
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(anuncio);
-        }
-
-        // GET: Anuncios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
             }
 
-            var anuncio = await _context.Anuncios
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (anuncio == null)
-            {
-                return NotFound();
-            }
+            _context.Anuncios.Add(anuncio);
+            _context.SaveChanges();
 
-            return View(anuncio);
+            return RedirectToAction("Index");
         }
-
-        // POST: Anuncios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var anuncio = await _context.Anuncios.FindAsync(id);
-            _context.Anuncios.Remove(anuncio);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        
-        private bool AnuncioExists(int id)
-        {
-            return _context.Anuncios.Any(e => e.Id == id);
-        }
-        */
-
-        #endregion
     }
 }

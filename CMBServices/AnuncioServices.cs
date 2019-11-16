@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CMBServices
 {
-    public class AnuncioServises : IAnuncio
+    public class AnuncioServices : IAnuncio
     {
         CMBContext _context;
 
-        public AnuncioServises(CMBContext context)
+        public AnuncioServices(CMBContext context)
         {
             _context = context;
         }

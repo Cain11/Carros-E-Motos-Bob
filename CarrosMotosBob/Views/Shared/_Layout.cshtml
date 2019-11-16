@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string clienteId = ViewContext.HttpContext.Request.Cookies["ClienteId"];
+    string clienteNome = ViewContext.HttpContext.Request.Cookies["ClienteNome"];
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,10 +10,6 @@
     <title>@ViewData["Title"] - CarrosMotosBob</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../styleautoboots.css" type="text/css">
-    <script type="text/javascript" src="bootstrap-4.3.1-dist/js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
     <header>
@@ -25,17 +25,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <!--
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="BaseClientes" asp-action="Index">Base de Clientes</a>
-                        </li>
-                        -->
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Anuncios" asp-action="Index">Anúncios</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Clientes" asp-action="Create">Cadastrar</a>
-                        </li>
+                        @if (clienteId == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Clientes" asp-action="Cadastro">Cadastrar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Clientes" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-info" asp-controller="Clientes" asp-action="MinhaConta">@clienteNome</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" asp-controller="Clientes" asp-action="Sair">Sair</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -9,9 +9,9 @@ namespace CMBData.Models
     {
         public int Id { get; set; }
 
-        [Required] public string Nome { get; set; }
+        public string Nome { get; set; }
 
-        [Range(0, 5)] public int Avaliacao { get; set; }
+        public int Avaliacao { get; set; }
 
         public int NumeroDePesquisas { get; set; }
     }
