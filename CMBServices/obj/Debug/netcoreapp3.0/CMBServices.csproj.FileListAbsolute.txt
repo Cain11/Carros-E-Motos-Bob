@@ -1,0 +1,11 @@
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\bin\Debug\netcoreapp3.0\CMBServices.deps.json
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\bin\Debug\netcoreapp3.0\CMBServices.dll
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\bin\Debug\netcoreapp3.0\CMBServices.pdb
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\bin\Debug\netcoreapp3.0\CMBData.dll
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\bin\Debug\netcoreapp3.0\CMBData.pdb
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\obj\Debug\netcoreapp3.0\CMBServices.csprojAssemblyReference.cache
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\obj\Debug\netcoreapp3.0\CMBServices.AssemblyInfoInputs.cache
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\obj\Debug\netcoreapp3.0\CMBServices.AssemblyInfo.cs
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\obj\Debug\netcoreapp3.0\CMBServices.csproj.CopyComplete
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\obj\Debug\netcoreapp3.0\CMBServices.dll
+E:\Bibliotecas\Documentos\+Projetos\VS 2019\Carros-E-Motos-Bob\CMBServices\obj\Debug\netcoreapp3.0\CMBServices.pdb

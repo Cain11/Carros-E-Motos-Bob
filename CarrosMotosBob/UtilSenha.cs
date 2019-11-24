@@ -15,7 +15,10 @@ namespace CarrosMotosBob
         private static byte[] GerarHashSenha(string senha, byte[] salt)
         {
             byte[] hashFinal = new byte[TamanhoHash + TamanhoSalt];
-            byte[] hash = new Rfc2898DeriveBytes(senha, salt).GetBytes(TamanhoHash);
+            byte[] hash;
+
+            using (var rfc2898 = new Rfc2898DeriveBytes(senha, salt))
+                hash = rfc2898.GetBytes(TamanhoHash);
 
             salt.CopyTo(hashFinal, 0);
             hash.CopyTo(hashFinal, TamanhoSalt);
@@ -26,7 +29,8 @@ namespace CarrosMotosBob
         public static byte[] GerarHashSenha(string senha)
         {
             byte[] salt = new byte[TamanhoSalt];
-            new RNGCryptoServiceProvider().GetBytes(salt);
+            using (var rng = new RNGCryptoServiceProvider())
+                rng.GetBytes(salt);
 
             return GerarHashSenha(senha, salt);
         }

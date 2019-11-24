@@ -12,7 +12,7 @@ namespace CMBData.Models
         [Required]
         public Cliente Anunciante { get; set; }
 
-        //TODO: Acrescentar [Required] ao modelo quando os modelos de carros forem implementados
+        [Required]
         public Modelo Modelo { get; set; }
 
         [Required]
