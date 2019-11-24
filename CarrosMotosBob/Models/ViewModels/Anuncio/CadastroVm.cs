@@ -10,6 +10,12 @@ namespace CarrosMotosBob.Models.ViewModels.Anuncio
     public class CadastroVm
     {
 
+        public CadastroVm() { }
+        public CadastroVm(List<Modelo.AnuncioCadastroVm> listaModelos)
+        {
+            ListaModelos = listaModelos;
+        }
+
         [Required]
         [Range(1900, 2100)]
         public int Ano { get; set; }
@@ -19,8 +25,9 @@ namespace CarrosMotosBob.Models.ViewModels.Anuncio
         [DataType(DataType.MultilineText)]
         public string Descricao { get; set; }
 
-        //TODO: Descomentar quando implementar os modelos de carros
-        //public int ModeloId { get; set; }
+        [Required]
+        [Display(Name = "Modelo")]
+        public int ModeloId { get; set; }
 
         public IFormFile Imagem { get; set; }
 
@@ -28,5 +35,8 @@ namespace CarrosMotosBob.Models.ViewModels.Anuncio
         [Display(Name = "Preço")]
         [DataType(DataType.Currency)]
         public double Preco { get; set; }
+
+        public List<Modelo.AnuncioCadastroVm> ListaModelos { get; set; }
+
     }
 }

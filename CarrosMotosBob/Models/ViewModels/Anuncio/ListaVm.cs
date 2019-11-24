@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using CarrosMotosBob.Models.ViewModels.Cliente;
+using CarrosMotosBob.Models.ViewModels.Modelo;
 
 namespace CarrosMotosBob.Models.ViewModels.Anuncio
 {
@@ -10,7 +12,7 @@ namespace CarrosMotosBob.Models.ViewModels.Anuncio
     {
         public AnuncianteVm Anunciante { get; set; }
 
-        public ModeloVm Modelo { get; set; }
+        public AnuncioListaVm Modelo { get; set; }
 
         public int Ano { get; set; }
 
@@ -24,22 +26,6 @@ namespace CarrosMotosBob.Models.ViewModels.Anuncio
 
         [Display(Name = "Preço")]
         public double Preco { get; set; }
-
-        public class AnuncianteVm
-        {
-            public string Nome { get; set; }
-
-            public string Telefone { get; set; }
-
-            public string Estado { get; set; }
-
-            public string Cidade { get; set; }
-        }
-
-        public class ModeloVm
-        {
-            //TODO: Preencher classe com os campos de modelo que serão exibidos na listagem de anúncios
-        }
 
     }
 }

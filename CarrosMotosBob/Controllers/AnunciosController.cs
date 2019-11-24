@@ -4,12 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CarrosMotosBob.Models.ViewModels.Anuncio;
+using CarrosMotosBob.Models.ViewModels.Modelo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CMBData;
 using CMBData.Models;
 using Microsoft.AspNetCore.Http;
+using CarrosMotosBob.Models.ViewModels.Cliente;
 
 namespace CarrosMotosBob.Controllers
 {
@@ -29,12 +31,11 @@ namespace CarrosMotosBob.Controllers
 
             var anuncios = _context.Anuncios
                 .Include(a => a.Anunciante)
-                //TODO: Descomentar quando implementar os modelos de carros
-                /*.Include(a => a.Modelo)*/;
+                .Include(a => a.Modelo);
 
             foreach (var anuncio in anuncios)
             {
-                ListaVm.AnuncianteVm anunciante = new ListaVm.AnuncianteVm
+                AnuncianteVm anunciante = new AnuncianteVm
                 {
                     Nome = anuncio.Anunciante.Nome,
                     Cidade = anuncio.Anunciante.Cidade,
@@ -42,9 +43,10 @@ namespace CarrosMotosBob.Controllers
                     Telefone = anuncio.Anunciante.Telefone
                 };
 
-                ListaVm.ModeloVm modelo = new ListaVm.ModeloVm
+                AnuncioListaVm modelo = new AnuncioListaVm
                 {
-                    //TODO: Preencher com dados do modelo do carro do anúncio
+                    Nome = anuncio.Modelo.Nome,
+                    Avaliacao = anuncio.Modelo.Avaliacao
                 };
 
                 ListaVm itemLista = new ListaVm
@@ -64,6 +66,23 @@ namespace CarrosMotosBob.Controllers
             return View(lista);
         }
 
+        private List<AnuncioCadastroVm> ObterListaModelos()
+        {
+            List<AnuncioCadastroVm> listaModelos = new List<AnuncioCadastroVm>();
+
+            foreach (var modelo in _context.Modelos)
+            {
+                AnuncioCadastroVm modeloVm = new AnuncioCadastroVm
+                {
+                    Id = modelo.Id,
+                    Nome = modelo.Nome
+                };
+                listaModelos.Add(modeloVm);
+            }
+
+            return listaModelos;
+        }
+
         [HttpGet]
         public IActionResult Cadastro()
         {
@@ -73,11 +92,11 @@ namespace CarrosMotosBob.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(new CadastroVm());
+            return View(new Models.ViewModels.Anuncio.CadastroVm(ObterListaModelos()));
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(CadastroVm dadosCadastro)
+        public IActionResult Cadastrar(Models.ViewModels.Anuncio.CadastroVm dadosCadastro)
         {
             string clienteId = Request.Cookies["ClienteId"];
             if (clienteId == null)
@@ -86,15 +105,14 @@ namespace CarrosMotosBob.Controllers
             }
 
             Cliente anunciante = _context.Clientes.Find(Convert.ToInt32(clienteId));
-            //TODO: Descomentar quando implementar os modelos de carros
-            /*
             Modelo modelo = _context.Modelos.Find(dadosCadastro.ModeloId);
             if (modelo == null)
             {
-                ModelState.AddModelError(string.Empty, "Modelo selecionado não existe");
+                ModelState.AddModelError(string.Empty, "Selecione um modelo de carro da lista");
+                dadosCadastro.ListaModelos = ObterListaModelos();
                 return View("Cadastro", dadosCadastro);
             }
-            */
+
             Anuncio anuncio = new Anuncio
             {
                 Anunciante = anunciante,
@@ -102,24 +120,22 @@ namespace CarrosMotosBob.Controllers
                 DataPublicacao = DateTime.Now,
                 Descricao = dadosCadastro.Descricao,
                 Preco = dadosCadastro.Preco,
-                //TODO: Descomentar quando implementar os modelos de carros
-                //Modelo = modelo
+                Modelo = modelo
             };
 
             if (dadosCadastro.Imagem != null)
             {
-                using (var memoryStream = new MemoryStream())
+                using var memoryStream = new MemoryStream();
+                dadosCadastro.Imagem.CopyTo(memoryStream);
+                if (memoryStream.Length < 2097152) //2097152 = 2Mb
                 {
-                    dadosCadastro.Imagem.CopyTo(memoryStream);
-                    if (memoryStream.Length < 2097152) //2097152 = 2Mb
-                    {
-                        anuncio.Imagem = Convert.ToBase64String(memoryStream.ToArray());
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "Imagem muito grande (máx. 2Mb)");
-                        return View("Cadastro", dadosCadastro);
-                    }
+                    anuncio.Imagem = Convert.ToBase64String(memoryStream.ToArray());
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Imagem muito grande (máx. 2Mb)");
+                    dadosCadastro.ListaModelos = ObterListaModelos();
+                    return View("Cadastro", dadosCadastro);
                 }
             }
 
